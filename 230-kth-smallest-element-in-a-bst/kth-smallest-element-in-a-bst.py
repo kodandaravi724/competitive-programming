@@ -10,9 +10,9 @@ class Solution:
             left_value = self.traverse(root.left, k, current)
             current[0]+=1
             currentElementOrder = current[0]
-            right_value = self.traverse(root.right, k, current)
             if currentElementOrder == k:
                 return root.val
+            right_value = self.traverse(root.right, k, current)
             if currentElementOrder != k:
                 return max(left_value, right_value)
         else:
