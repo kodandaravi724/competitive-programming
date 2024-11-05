@@ -21,8 +21,7 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
         return nil
     }
     rootVal := preorder[0]
-    root := new(TreeNode)
-    root.Val = rootVal
+    root := &TreeNode{rootVal, nil, nil}
     index := getIndex(inorder, rootVal)
     root.Left = buildTree(preorder[1:index+1], inorder[:index])
     root.Right = buildTree(preorder[index+1:], inorder[index+1:])
