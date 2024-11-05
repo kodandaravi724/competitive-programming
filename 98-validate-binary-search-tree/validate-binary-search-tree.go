@@ -1,4 +1,3 @@
-import "math"
 
 /**
  * Definition for a binary tree node.
@@ -9,19 +8,17 @@ import "math"
  * }
  */
 
-func checkIfValid(root *TreeNode, leftBound float64, rightBound float64) bool{
+func checkIfValid(root *TreeNode, leftBound int, rightBound int) bool{
     if root == nil {
         return true
     }
-    if float64(root.Val) > leftBound && float64(root.Val) < rightBound {
-        return checkIfValid(root.Left, leftBound, float64(root.Val)) && checkIfValid(root.Right, float64(root.Val), rightBound)
+    if root.Val > leftBound && root.Val < rightBound {
+        return checkIfValid(root.Left, leftBound, root.Val) && checkIfValid(root.Right, root.Val, rightBound)
     } else {
         return false
     }
 }
 
 func isValidBST(root *TreeNode) bool {
-    leftBound := math.Inf(-1)
-    rightBound := math.Inf(1)
-    return checkIfValid(root, leftBound, rightBound)
+    return checkIfValid(root, -100000000000, 100000000000)
 }
