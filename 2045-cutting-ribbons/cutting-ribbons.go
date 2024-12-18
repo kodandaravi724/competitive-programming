@@ -29,16 +29,13 @@ func maxLength(ribbons []int, k int) int {
         return 0
     }
 
-    ans := 0
-    fmt.Println(r)
-    for l <= r {
-        mid := l + (r-l)/2
+    for l < r {
+        mid := (l+r+1)/2
         if isPossible(ribbons, k, mid) {
-            ans = mid
-            l = mid+1
+            l = mid
         } else {
             r = mid - 1
         }
     }
-    return ans
+    return l
 }
