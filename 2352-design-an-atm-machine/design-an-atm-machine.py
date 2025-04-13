@@ -13,7 +13,6 @@ class ATM:
         
 
     def withdraw(self, amount: int) -> List[int]:
-        print(self.freq)
         currentState = self.freq.copy()
         i = 4
         res = [0]*5
